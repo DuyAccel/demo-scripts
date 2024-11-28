@@ -1,0 +1,16 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    haproxy.router.openshift.io/balance: roundrobin
+  name: {{ .Route }}
+  namespace: {{ .Namespace }}
+spec:
+  host: {{ .Host }}
+  port:
+    targetPort: {{ .Port }}
+  to:
+    kind: Service
+    name: {{ .Service }}
+    weight: {{ .Weight }}
+  {{ .AlterBackend }}
