@@ -78,7 +78,7 @@ sed -e "s/{{ .Namespace }}/$namespace/" \
     -e "/{{ .AlterBackend }}/{
         s/{{ .AlterBackend }}//
         r AlterBackend.yaml
-        }" scripts/route.tmpl > route.yaml
+        }" route.tmpl > route.yaml
 
 echo "Route config:"
 cat route.yaml
